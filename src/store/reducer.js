@@ -1,6 +1,13 @@
 // src/store/reducer.js
 import { combineReducers } from "redux";
+import developersReducer from "./developers/reducer"
+import postReducer from "./post/reducer"
+import loginReducer from "./Login/reducer"
 
 export default combineReducers({
-  // we can add "slice" subreducers here later on...
-});
+    developers: developersReducer,
+    post: postReducer,
+    login: loginReducer,
+
+    }
+);

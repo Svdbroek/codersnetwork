@@ -1,24 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Switch, Route } from "react-router-dom";
+import "./App.css";
+import DeveloperList from "./components/DeveloperList";
+import Homepage from "./components/Homepage";
+import Toolbar from "./components/Toolbar";
+import PostPage from "./components/PostPage";
+import LoginPage from './components/LoginPage';
+import SignUp from './components/SignUp';
+import  deleteAccount  from "./components/DeleteAccount";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Toolbar />
+      <Switch>
+        <Route path="/Developers" component={DeveloperList} />
+        <Route path="/read/:id" component={PostPage} />
+        <Route path="/login" component={LoginPage} />
+        <Route path="/signup" component={SignUp} />
+        <Route path="/delete" component={deleteAccount}/>
+        <Route component={Homepage} /> {/* always do the default last, it's just like an actual switch :D*/}
+      </Switch>
     </div>
   );
 }

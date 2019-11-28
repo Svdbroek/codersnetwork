@@ -10,10 +10,6 @@ export default combineReducers({
     developers: developersReducer,
     posts: postReducer,
     login: loginReducer,
-<<<<<<< HEAD
-}
-=======
     profileInfo: profilePageReducer
-    }
->>>>>>> master
+}
 );

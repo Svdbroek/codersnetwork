@@ -11,5 +11,6 @@ export default combineReducers({
     posts: postReducer,
     login: loginReducer,
     profileInfo: profilePageReducer
-    }
+}
+
 );

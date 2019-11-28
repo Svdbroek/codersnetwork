@@ -18,11 +18,16 @@ class DeleteAccount extends Component {
         console.log(this.props.login)
         this.props.dispatch(deleteAccount(this.props.login.profile.id, this.props.login.accessToken.jwt))
     }
+
+    componentDidMount(){
+        console.log('router props', this.props)
+
+    }
     
     render() {
         return (
             <div>
-                <span> test </span>
+                <span> THERE IS NO WAY BACK </span>
                 <br/>
                 <br/>
                 <br/>

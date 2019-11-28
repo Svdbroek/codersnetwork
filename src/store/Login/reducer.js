@@ -13,6 +13,10 @@ const initialState = {
       case "auth/SAVE_ACCESS_TOKEN":{
         return {...state, accessToken:action.payload}
       }
+      case "auth/LOG_OUT": {
+        // => Ask yourself: what is action.payload?
+        return {...state,  accessToken: null, profile: null };
+      }
       default: {
         return state;
       }

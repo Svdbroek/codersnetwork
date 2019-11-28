@@ -38,3 +38,9 @@ export function saveAccessToken(accessToken) {
     payload: accessToken
   };
 }
+
+export function logOut(){
+  return {
+      type: 'auth/LOG_OUT'
+  }
+}

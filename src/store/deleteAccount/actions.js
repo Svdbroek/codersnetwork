@@ -1,4 +1,5 @@
 import api from '../../api'
+import {logOut} from '../Login/actions'
 
 export function deleteAccount (id, jwt){
     return function thunk(dispatch,getstate ) {
@@ -6,7 +7,8 @@ export function deleteAccount (id, jwt){
         method: "DELETE",
         jwt: jwt
       })
-        .then(data => console.log("data", data))
+        .then(dispatch(logOut()))
         .catch(err => console.log("err", err));
 
 }}
+

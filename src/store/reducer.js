@@ -12,4 +12,5 @@ export default combineReducers({
     login: loginReducer,
     profileInfo: profilePageReducer
 }
+
 );

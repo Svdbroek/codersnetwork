@@ -20,11 +20,11 @@ class DevelopersList extends React.Component {
         <h1>Codaisseur developers</h1>
         {
           loading
-            ? <p>Loading...</p>
-            : <div><p>We have {this.props.devs.count} developers!</p>
-
-              {this.props.devs.rows.map((object) => { return <Developer name={object.name} email={object.email} id={object.id} /> })}
-            </div>
+          ? <p>Loading...</p>
+          : <div><p>We have {this.props.devs.count} developers!</p>
+      
+          {this.props.devs.rows.map((object)=>{return <Developer name={object.name} email ={object.email} id={object.id}/> })}
+          </div>
         }
       </div>
     )

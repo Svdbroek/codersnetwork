@@ -8,9 +8,9 @@ import Developer from "./Developer";
 // The "unconnected" inner component:
 class DevelopersList extends React.Component {
   componentDidMount() {
-    // dispatch the "thunk" (function) itself
-    this.props.dispatch(fetchDevelopers);
-  
+    if (!this.props.devs) {
+      this.props.dispatch(fetchDevelopers);
+    }
   }
 
   render() {
@@ -21,11 +21,11 @@ class DevelopersList extends React.Component {
         <h1>Codaisseur developers</h1>
         {
           loading
-          ? <p>Loading...</p>
-          : <div><p>We have {this.props.devs.count} developers!</p>
-      
-          {this.props.devs.rows.map((object)=>{return <Developer name={object.name} email ={object.email}/> })}
-          </div>
+            ? <p>Loading...</p>
+            : <div><p>We have {this.props.devs.count} developers!</p>
+
+              {this.props.devs.rows.map((object) => { return <Developer name={object.name} email={object.email} /> })}
+            </div>
         }
       </div>
     )

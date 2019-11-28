@@ -1,22 +1,32 @@
 import React from "react";
 import { connect } from "react-redux";
-import {fetchPost} from '../store/post/actions'
+import { fetchAllPosts } from '../store/post/actions'
 
 
 class PostPage extends React.Component {
   componentDidMount() {
-    const post_id = this.props.match.params.id;
-    this.props.dispatch(fetchPost(post_id))
-    console.log('fetching post', post_id)
+    if (!this.props.posts) {
+      this.props.dispatch(fetchAllPosts())
+    }
   }
 
   render() {
-    const title = "??";
-
     return (
       <div>
-        <h1>{title}</h1>
-        <p>Loading...</p>
+        {this.props.posts && this.props.posts.reduce((acc, item) => {
+          if (item.id === parseInt(this.props.match.params.id)) {
+            return (
+              <div>
+                <h1>Welcome to a single post's page!</h1>
+                <h2>{item.title}</h2>
+                <p>{item.content}</p>
+                <p className="date-text">Created at: {item.createdAt}</p>
+              </div>
+            )
+          }
+          return acc
+        }, null)}
+        {!this.props.posts && <p>Loading...</p>}
       </div>
     );
   }
@@ -24,7 +34,7 @@ class PostPage extends React.Component {
 
 function mapStateToProps(reduxState) {
   return {
-    post: reduxState.post
+    posts: reduxState.posts
   };
 }
 

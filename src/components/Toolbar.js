@@ -1,19 +1,22 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+
 class Toolbar extends Component {
   render() {
     return (
-      <div>
-        <Link to="/">Home</Link> <span></span>
+      <div className="toolbar">
+        <Link to="/" className="toolbar-element">Home</Link> <span></span>
         {!this.props.login.profile ? (
-          <Link to="/login">Login</Link>
+          <Link to="/login" className="toolbar-element">Login</Link>
         ) : (
-          <span>{this.props.login.profile.name}</span>
-        )}
-        <span> </span> <Link to="/developers">developers</Link>
+            <span>{this.props.login.profile.name}</span>
+          )}
+        <span> </span> <Link to="/developers" className="toolbar-element">Developers</Link>
         <span> </span>
-        <Link to="/delete">killswitch engage</Link>
+        <Link to="/posts" className="toolbar-element">Show all the posts</Link>
+        <span> </span>
+        <Link to="/delete" className="toolbar-element">Killswitch engage</Link>
       </div>
     );
   }

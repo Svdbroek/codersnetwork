@@ -7,8 +7,7 @@ import loginReducer from "./Login/reducer"
 
 export default combineReducers({
     developers: developersReducer,
-    post: postReducer,
+    posts: postReducer,
     login: loginReducer,
-
-    }
+}
 );

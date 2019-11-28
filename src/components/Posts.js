@@ -6,9 +6,7 @@ import Post from './Post'
 
 class Posts extends Component {
   componentDidMount() {
-    if (!this.props.posts) {
-      this.props.dispatch(fetchAllPosts())
-    }
+    this.props.dispatch(fetchAllPosts())
   }
   render() {
     return (

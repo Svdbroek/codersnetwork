@@ -10,6 +10,7 @@ import LoginPage from './components/LoginPage';
 import SignUp from './components/SignUp';
 import deleteAccount from "./components/DeleteAccount";
 import ProfilePage from "./components/ProfilePage";
+import WriteAPost from './components/WriteAPost'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/Developers" component={DeveloperList} />
         <Route path="/posts/:id" component={PostPage} />
         <Route path="/login" component={LoginPage} />
+        <Route path="/writepost" component={WriteAPost} />
         <Route path="/posts" component={Posts} />
         <Route path="/signup" component={SignUp} />
         <Route path="/delete" component={deleteAccount} />

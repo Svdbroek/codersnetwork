@@ -1,6 +1,6 @@
 const initialState = {
     accessToken: null,
-    profile: null
+    profile: {}
   };
   
   export default function authReducer(state = initialState, action) {

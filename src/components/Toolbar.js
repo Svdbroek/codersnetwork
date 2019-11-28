@@ -7,10 +7,10 @@ class Toolbar extends Component {
     return (
       <div className="toolbar">
         <Link to="/" className="toolbar-element">Home</Link> <span></span>
-        {!this.props.login.profile ? (
+        {!this.props.login.profile.name ? (
           <Link to="/login" className="toolbar-element">Login</Link>
         ) : (
-            <span>{this.props.login.profile.name}</span>
+            <Link to= {`/developer/${this.props.login.profile.id}`} >{this.props.login.profile.name}</Link>
           )}
         <span> </span> <Link to="/developers" className="toolbar-element">Developers</Link>
         <span> </span>

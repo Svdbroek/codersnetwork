@@ -1,7 +1,6 @@
 // src/components/DevelopersList.js
 import React from "react";
 import { connect } from "react-redux";
-
 import { fetchDevelopers } from "../store/developers/actions";
 import Developer from "./Developer";
 
@@ -24,7 +23,7 @@ class DevelopersList extends React.Component {
           ? <p>Loading...</p>
           : <div><p>We have {this.props.devs.count} developers!</p>
       
-          {this.props.devs.rows.map((object)=>{return <Developer name={object.name} email ={object.email}/> })}
+          {this.props.devs.rows.map((object)=>{return <Developer name={object.name} email ={object.email} id={object.id}/> })}
           </div>
         }
       </div>

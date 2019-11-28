@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {getProfile} from '../store/ProfilePage/actions'
-import {Link} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
 import Post from './Post'
 
+
 function mapStateToProps(state) {
-    return { profile : state.profileInfo
+    return { profile : state.profileInfo,
+            login: state.login,
 
     };
 }
@@ -21,9 +23,10 @@ class ProfilePage extends Component {
         console.log(this.props.match.params.id)
         if (!this.props.profile){return <p>loading...</p>}
         const {name, intro, github_username, website, createdAt,technologies, posts, id} =this.props.profile
+        console.log(id, this.props.login.profile.id)
         return (
             <div>
-                {(id === this.props.match.params.id) ? <button>Update Profile</button>: <br/>}
+                {(id === this.props.login.profile.id) ? <Link to="/updateProfile">Update Profile</Link>: <br/>}
                 <h1>{name}</h1>
                 <h4>{intro}</h4>
                 <p><strong>Github: </strong>{github_username}</p>

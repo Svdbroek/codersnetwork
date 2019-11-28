@@ -8,7 +8,7 @@ class Toolbar extends Component {
                 <Link to="/">Home</Link> <span></span>
                 {!this.props.login.profile?  <Link to="/login">Login</Link>: <span>{this.props.login.profile.name}</span>}
                <span></span> <Link to="/developers">developers</Link> 
-<Link to="/delete">killswitch engage</Link>
+
             </div>
         )
     }

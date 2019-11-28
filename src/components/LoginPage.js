@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import {login} from '../store/Login/actions'
-import {Link} from 'react-router-dom'
+import { login } from '../store/Login/actions'
+import { Link } from 'react-router-dom'
 
 
 class LoginPage extends React.Component {
@@ -12,9 +12,9 @@ class LoginPage extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log ('submitting')
-   this.props.dispatch( login(this.state.email, this.state.password)) // don't forget to this.props.
-    
+    console.log('submitting')
+    const action = login(this.state.email, this.state.password, this.props.history.push)
+    this.props.dispatch(action) // don't forget to this.props.
   }
 
   handleChange = event => {

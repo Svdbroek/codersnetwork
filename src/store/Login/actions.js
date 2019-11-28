@@ -2,7 +2,7 @@ import api from "../../api";
 
 
 // A thunk creator
-export function login(email, password) {
+export function login(email, password, push) {
   // Return the thunk itself, i.e. a function
   console.log(email, "email", "password", password);
   return function thunk(dispatch, getState) {
@@ -14,33 +14,38 @@ export function login(email, password) {
         password: password
       }
     })
-      .then(data =>( dispatch(saveAccessToken(data)),
+      .then(data => (dispatch(saveAccessToken(data)),
         api("/me", { jwt: data.jwt }))
-          .then(data => dispatch(userLoggedIn(data)))
-          .catch(err => console.log("err", err))
+        .then(data => {
+          dispatch(userLoggedIn(data))
+          if (push) {
+            push('/')
+          }
+        })
+        .catch(err => console.log("err", err))
       )
       .catch(err => console.log("err", err));
   };
 }
 
-export function userLoggedIn(profile){
-    return {
-        type:"auth/USER_LOGGED_IN",
-        payload: profile
-    }
+export function userLoggedIn(profile) {
+  return {
+    type: "auth/USER_LOGGED_IN",
+    payload: profile
+  }
 }
 
 // An action creator
 export function saveAccessToken(accessToken) {
-    console.log('saving token')
+  console.log('saving token')
   return {
     type: "auth/SAVE_ACCESS_TOKEN",
     payload: accessToken
   };
 }
 
-export function logOut(){
+export function logOut() {
   return {
-      type: 'auth/LOG_OUT'
+    type: 'auth/LOG_OUT'
   }
 }

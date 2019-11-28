@@ -20,3 +20,25 @@
 .App-link {
   color: #09d3ac;
 }
+
+.post {
+  margin: 10px auto;
+  border: 1px gray solid;
+  padding: 5px 10px;
+  width: 80%;
+  text-align: center;
+}
+
+.toolbar {
+  padding-top: 10px;
+}
+
+.toolbar-element {
+  padding: 5px;
+  margin: 10px;
+  border: 1px gray solid;
+}
+
+.date-text {
+  font-style: italic;
+}

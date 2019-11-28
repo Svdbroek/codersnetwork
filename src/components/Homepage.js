@@ -4,7 +4,7 @@ export default class Homepage extends React.Component {
     render() {
         return (
             <div>
-                Something nice
+                <h1>Welcome to the Codaisseur developers social media!</h1>
             </div>
         )
     }

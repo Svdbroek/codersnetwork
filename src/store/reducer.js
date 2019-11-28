@@ -8,8 +8,12 @@ import profilePageReducer from "./ProfilePage/reducer"
 
 export default combineReducers({
     developers: developersReducer,
-    post: postReducer,
+    posts: postReducer,
     login: loginReducer,
+<<<<<<< HEAD
+}
+=======
     profileInfo: profilePageReducer
     }
+>>>>>>> master
 );

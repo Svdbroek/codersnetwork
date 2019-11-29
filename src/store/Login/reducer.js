@@ -17,6 +17,9 @@ export default function authReducer(state = initialState, action) {
       // => Ask yourself: what is action.payload?
       return { ...state, accessToken: null, profile: null };
     }
+    case "UPDATING_DATA":{
+      return {...state, profile:action.payload}
+    }
     default: {
       return state;
     }

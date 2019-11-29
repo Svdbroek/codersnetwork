@@ -28,6 +28,15 @@ export function login(email, password, push) {
   };
 }
 
+
+export function updateUserData(profile){
+  return {
+    type: "UPDATING_DATA",
+    payload: profile
+
+  }
+}
+
 export function userLoggedIn(profile) {
   return {
     type: "auth/USER_LOGGED_IN",

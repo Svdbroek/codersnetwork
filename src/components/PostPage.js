@@ -2,7 +2,10 @@ import React from "react";
 import { connect } from "react-redux";
 import { fetchAllPosts } from '../store/post/actions'
 import { fetchDevelopers } from '../store/developers/actions'
+import {fetchComments} from '../store/comments/action'
 import { Link } from 'react-router-dom'
+import Comment from './Comment'
+
 
 
 class PostPage extends React.Component {
@@ -14,6 +17,7 @@ class PostPage extends React.Component {
       console.log('HELLO!!!')
       this.props.dispatch(fetchDevelopers)
     }
+    this.props.dispatch(fetchComments(this.props.match.params.id))
   }
 
   render() {
@@ -33,6 +37,10 @@ class PostPage extends React.Component {
                   }
                   return acc
                 }, null)}</Link></p>
+                <div> 
+                {this.props.comments && this.props.comments.rows.map((object)=>{return <Comment author={object.developer.name} text={object.text} id={object.id}/> })}
+
+                </div>
               </div>
             )
           }
@@ -47,7 +55,8 @@ class PostPage extends React.Component {
 function mapStateToProps(reduxState) {
   return {
     posts: reduxState.posts,
-    developers: reduxState.developers
+    developers: reduxState.developers,
+    comments: reduxState.comments
   };
 }
 

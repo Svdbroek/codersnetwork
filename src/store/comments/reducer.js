@@ -6,6 +6,11 @@ export default function reducer(state = initialState, action) {
       // => Ask yourself: what is action.payload?
       return {...action.payload};
     }
+    case "COMMENT_SUBMISION":{
+        return {
+            ...state, rows: [action.payload, ...state.rows]
+        }
+    }
     default: {
       return state;
     }

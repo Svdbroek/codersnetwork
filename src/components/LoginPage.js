@@ -12,7 +12,7 @@ class LoginPage extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log('submitting')
+    console.log('this.props', this.props)
     const action = login(this.state.email, this.state.password, this.props.history.push)
     this.props.dispatch(action) // don't forget to this.props.
   }

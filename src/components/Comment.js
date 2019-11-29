@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import {Link} from 'react-router-dom'
 
 class comment extends Component {
     render() {
         return (
             <div>
-               <p> <strong>{this.props.author}</strong> commented:</p>
+               <p> 
+<Link to={`/developer/${this.props.authorId}`}>
+                   <strong>{this.props.author}</strong> 
+                   </Link> commented:</p>
                <p> {this.props.text}</p>
             </div>
         );
@@ -14,3 +17,5 @@ class comment extends Component {
 }
 
 export default connect()(comment);
+
+

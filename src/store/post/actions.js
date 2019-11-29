@@ -15,10 +15,20 @@ export function fetchPost(id) {
 
 export function fetchAllPosts() {
   return function thunk(dispatch, getState) {
-    api(`/posts?limit=25`)
+    api(`/posts?limit=99999`)
       .then(posts => {
-        dispatch(savePosts(posts.rows))
+        dispatch(savePosts(posts))
         console.log('from fetch all Posts', posts)
+      })
+  }
+}
+
+export function fetchRangeOfPosts(queryString) {
+  return function thunk(dispatch, getState) {
+    api(`/posts${queryString}`)
+      .then(posts => {
+        dispatch(savePosts(posts))
+        console.log('from fetch range of Posts', posts)
       })
   }
 }

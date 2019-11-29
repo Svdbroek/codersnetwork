@@ -40,7 +40,7 @@ class WriteAPost extends Component {
               onChange={this.handleChange}
             />
           </p>
-          <button type="submit">Login</button>
+          <button type="submit">Send post!</button>
         </form>
       </div>
     );

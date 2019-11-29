@@ -15,7 +15,7 @@ export function fetchPost(id) {
 
 export function fetchAllPosts() {
   return function thunk(dispatch, getState) {
-    api(`/posts`)
+    api(`/posts?limit=25`)
       .then(posts => {
         dispatch(savePosts(posts.rows))
         console.log('from fetch all Posts', posts)

@@ -15,7 +15,7 @@ class Toolbar extends Component {
         <span> </span>
         <Link to="/delete" className="toolbar-element">Killswitch engage</Link>
         {this.props.login.profile.name && <div><br /><span>Logged in as <Link to={`/developer/${this.props.login.profile.id}`} >{this.props.login.profile.name}</Link></span></div>}
-      </div >
+      </div>
     );
   }
 }

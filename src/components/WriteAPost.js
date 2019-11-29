@@ -15,7 +15,7 @@ class WriteAPost extends Component {
   handleSubmit = event => {
     event.preventDefault();
     console.log(this.props.login.accessToken.jwt)
-    const action = sendPost(this.props.login.accessToken.jwt, this.state.title, this.state.content)
+    const action = sendPost(this.props.login.accessToken.jwt, this.state.title, this.state.content, this.props.history.push)
     this.props.dispatch(action)
   }
   render() {

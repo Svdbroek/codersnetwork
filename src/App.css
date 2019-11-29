@@ -42,3 +42,13 @@
 .date-text {
   font-style: italic;
 }
+
+.pagination-section {
+  display: inline;
+}
+
+.pagination-button {
+    cursor:pointer;
+    color:blue;
+    text-decoration:underline;
+}

@@ -19,7 +19,7 @@ class PostPage extends React.Component {
   render() {
     return (
       <div>
-        {this.props.posts && this.props.posts.reduce((acc, item) => {
+        {this.props.posts && this.props.posts.rows.reduce((acc, item) => {
           if (item.id === parseInt(this.props.match.params.id)) {
             return (
               <div>
@@ -39,7 +39,7 @@ class PostPage extends React.Component {
           return acc
         }, null)}
         {!this.props.posts && <p>Loading...</p>}
-      </div >
+      </div>
     );
   }
 }

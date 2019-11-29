@@ -1,5 +1,19 @@
 import api from '../../api'
 
+export function deletePost(jwt, id, push, devID) {
+  return function thunk(dispatch, getState) {
+    api(`/posts/${id}`, {
+      method: "DELETE",
+      jwt
+    }).then(data => {
+      if (push) {
+        push(`/developer/${devID}`)
+      }
+    })
+      .catch(err => console.log("err", err));
+  }
+}
+
 export function sendPost(jwt, title, content, push) {
   return function thunk(dispatch, getstate) {
     console.log({
@@ -21,7 +35,7 @@ export function sendPost(jwt, title, content, push) {
       if (push) {
         push('/posts')
       }
-      console.log(data)
+      console.log('post with tags', data)
     }
     )
       .catch(err => console.log("err", err));

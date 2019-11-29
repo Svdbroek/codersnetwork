@@ -15,10 +15,10 @@ export default function authReducer(state = initialState, action) {
     }
     case "auth/LOG_OUT": {
       // => Ask yourself: what is action.payload?
-      return { ...state, accessToken: null, profile: null };
+      return { ...state, accessToken: null, profile: {} };
     }
-    case "UPDATING_DATA":{
-      return {...state, profile:action.payload}
+    case "UPDATING_DATA": {
+      return { ...state, profile: action.payload }
     }
     default: {
       return state;

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { sendPost } from '../store/WriteAPost/actions'
+import { sendPost, deletePost } from '../store/WriteAPost/actions'
+import { Link } from 'react-router-dom'
 
 class WriteAPost extends Component {
   state = {

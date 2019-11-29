@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { fetchAllPosts } from '../store/post/actions'
 import { fetchDevelopers } from '../store/developers/actions'
 import { Link } from 'react-router-dom'
+import { deletePost } from '../store/WriteAPost/actions'
 
 
 class PostPage extends React.Component {
@@ -28,6 +29,7 @@ class PostPage extends React.Component {
                   }
                   return acc
                 }, null)}</Link></p>
+                {this.props.login.profile.id === item.author_id && <button onClick={() => this.props.dispatch(deletePost(this.props.login.accessToken.jwt, item.id, () => this.props.history.push('/posts'), this.props.login.profile.id))}>Delete Post</button>}
               </div>
             )
           }
@@ -42,7 +44,8 @@ class PostPage extends React.Component {
 function mapStateToProps(reduxState) {
   return {
     posts: reduxState.posts,
-    developers: reduxState.developers
+    developers: reduxState.developers,
+    login: reduxState.login
   };
 }
 

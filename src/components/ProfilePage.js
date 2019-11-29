@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getProfile , updateProfile} from "../store/ProfilePage/actions";
+import { getProfile, updateProfile } from "../store/ProfilePage/actions";
 import { Link } from "react-router-dom";
 import Post from "./Post";
 
@@ -16,7 +16,7 @@ class ProfilePage extends Component {
     website: "",
     technologies: "",
     github: "",
-    intro: "", 
+    intro: "",
   };
 
   componentDidMount() {
@@ -28,7 +28,7 @@ class ProfilePage extends Component {
 
     event.preventDefault();
     this.setState({ edit: true });
-    this.setState({name: this.props.login.profile.name, intro: this.props.login.profile.intro, github:this.props.login.profile.github_username, website:this.props.login.profile.website, technologies:this.props.login.profile.technologies})
+    this.setState({ name: this.props.login.profile.name, intro: this.props.login.profile.intro, github: this.props.login.profile.github_username, website: this.props.login.profile.website, technologies: this.props.login.profile.technologies })
 
   };
 
@@ -38,22 +38,22 @@ class ProfilePage extends Component {
     });
   }
 
-  handleSubmit = event =>{
-      event.preventDefault();
-      console.log ('submitting')
-      const userId = this.props.match.params.id;
-        const jwt = this.props.login.accessToken.jwt
-      const {
-        name,
-        intro,
-        github,
-        website,
-        technologies
-      } =this.state
+  handleSubmit = event => {
+    event.preventDefault();
+    console.log('submitting')
+    const userId = this.props.match.params.id;
+    const jwt = this.props.login.accessToken.jwt
+    const {
+      name,
+      intro,
+      github,
+      website,
+      technologies
+    } = this.state
 
 
-      this.props.dispatch(updateProfile(name,intro, github, website, technologies,userId,jwt))
-      this.setState({edit:false})
+    this.props.dispatch(updateProfile(name, intro, github, website, technologies, userId, jwt))
+    this.setState({ edit: false })
   }
 
   render() {
@@ -77,26 +77,26 @@ class ProfilePage extends Component {
       return (
         <div>
           :D
-          <form onSubmit ={this.handleSubmit}>
-            <p>Name: <input type="name" name ="name" value ={this.state.name} onChange={this.handleChange}  /></p>
-            <p>Intro: <input type="intro" name ="intro" value ={this.state.intro} onChange={this.handleChange}  /></p>
+          <form onSubmit={this.handleSubmit}>
+            <p>Name: <input type="name" name="name" value={this.state.name} onChange={this.handleChange} /></p>
+            <p>Intro: <input type="intro" name="intro" value={this.state.intro} onChange={this.handleChange} /></p>
             <p>
-              <strong>Github: </strong> <input type="github" name ="github" value ={this.state.github} onChange={this.handleChange}  />
+              <strong>Github: </strong> <input type="github" name="github" value={this.state.github} onChange={this.handleChange} />
             </p>
 
-              <p>
-                <strong>Website: </strong> <input type="website" name ="website" value ={this.state.website} onChange={this.handleChange}  />
-              </p>
+            <p>
+              <strong>Website: </strong> <input type="website" name="website" value={this.state.website} onChange={this.handleChange} />
+            </p>
             <p>
               <strong>technologies: </strong>
-              <input type="technologies" name ="technologies" value ={this.state.technologies} onChange={this.handleChange}  />
+              <input type="technologies" name="technologies" value={this.state.technologies} onChange={this.handleChange} />
             </p>
-           
+
             <p>
               <strong>Created at: </strong>
               {createdAt}
             </p>
-           <button>submit</button>
+            <button>submit</button>
           </form>
         </div>
       );
@@ -106,8 +106,8 @@ class ProfilePage extends Component {
           {id === this.props.login.profile.id ? (
             <button onClick={this.editProfile}>Update Profile</button>
           ) : (
-            <br />
-          )}
+              <br />
+            )}
           <h1>{name}</h1>
           <h4>{intro}</h4>
           <p>
@@ -119,8 +119,8 @@ class ProfilePage extends Component {
               <strong>Website: </strong> <a href={website}>{website}</a>
             </p>
           ) : (
-            <br />
-          )}
+              <br />
+            )}
           <p>
             <strong>technologies: </strong>
             {[technologies]}
@@ -135,7 +135,7 @@ class ProfilePage extends Component {
           <p>
             {posts.map(post => (
               <Link to={`/posts/${post.id}`}>
-                <Post key={post.id} title={post.title} />
+                <Post key={post.id} title={post.title} isThereDeleteButton={id === this.props.login.profile.id} id={post.id} />
               </Link>
             ))}
           </p>

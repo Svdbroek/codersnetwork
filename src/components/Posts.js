@@ -3,6 +3,7 @@ import { fetchAllPosts, fetchRangeOfPosts } from '../store/post/actions'
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom'
 import Post from './Post'
+import { loadPartialConfig } from '@babel/core';
 
 class Posts extends Component {
   state = {
@@ -14,6 +15,7 @@ class Posts extends Component {
   handleOnClick = event => {
     const queryString = `?offset=${(event.target.name - 1) * 10}&limit=10`
     this.props.dispatch(fetchRangeOfPosts(queryString))
+    this.setState({ currentPage: event.target.name })
   }
   render() {
     return (
@@ -32,7 +34,7 @@ class Posts extends Component {
                 <span> </span>
               </div>)
           })}
-          <p>Posts</p>
+          {this.props.posts && <p>Posts {(this.state.currentPage - 1) * 10 + 1} - {(this.state.currentPage * 10) < this.props.posts.count ? (this.state.currentPage * 10) : this.props.posts.count} out of {this.props.posts.count}</p>}
         </div>
         {this.props.posts && this.props.posts.rows.map(post => <Link to={`/posts/${post.id}`}><Post key={post.id} title={post.title} content={post.content} /></Link>)
         }

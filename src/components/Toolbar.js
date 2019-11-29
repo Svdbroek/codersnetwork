@@ -12,8 +12,9 @@ class Toolbar extends Component {
         <span> </span> <Link to="/developers" className="toolbar-element">Developers</Link>
         <span> </span>
         <Link to="/posts" className="toolbar-element">Show all the posts</Link>
+        {this.props.login.profile.name && <Link to="/loggedout" className="toolbar-element">Logout</Link>}
         <span> </span>
-        <Link to="/delete" className="toolbar-element">Killswitch engage</Link>
+        {this.props.login.profile.name && <Link to="/delete" className="toolbar-element">Delete account</Link>}
         {this.props.login.profile.name && <div><br /><span>Logged in as <Link to={`/developer/${this.props.login.profile.id}`} >{this.props.login.profile.name}</Link></span></div>}
       </div>
     );

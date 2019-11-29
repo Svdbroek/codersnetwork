@@ -14,6 +14,7 @@ class PostPage extends React.Component {
 
   }
   componentDidMount() {
+<<<<<<< HEAD
     if (!this.props.posts) {
       this.props.dispatch(fetchAllPosts());
     }
@@ -33,6 +34,10 @@ class PostPage extends React.Component {
     this.setState({
       value: event.target.value
     });
+=======
+    this.props.dispatch(fetchAllPosts())
+    this.props.dispatch(fetchDevelopers)
+>>>>>>> master
   }
 
   commentHandler = event => {

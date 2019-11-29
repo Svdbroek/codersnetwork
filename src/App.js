@@ -11,6 +11,7 @@ import SignUp from './components/SignUp';
 import deleteAccount from "./components/DeleteAccount";
 import ProfilePage from "./components/ProfilePage";
 import WriteAPost from './components/WriteAPost'
+import LoggedOut from './components/LoggedOut'
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
         <Route path="/posts" component={Posts} />
         <Route path="/signup" component={SignUp} />
         <Route path="/delete" component={deleteAccount} />
+        <Route path="/loggedout" component={LoggedOut} />
         <Route path="/developer/:id" component={ProfilePage} />
         <Route component={Homepage} /> {/* always do the default last, it's just like an actual switch :D*/}
       </Switch>

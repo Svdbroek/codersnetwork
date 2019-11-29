@@ -7,13 +7,8 @@ import { Link } from 'react-router-dom'
 
 class PostPage extends React.Component {
   componentDidMount() {
-    if (!this.props.posts) {
-      this.props.dispatch(fetchAllPosts())
-    }
-    if (!this.props.developers) {
-      console.log('HELLO!!!')
-      this.props.dispatch(fetchDevelopers)
-    }
+    this.props.dispatch(fetchAllPosts())
+    this.props.dispatch(fetchDevelopers)
   }
 
   render() {

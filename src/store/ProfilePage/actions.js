@@ -13,3 +13,21 @@ export function foundProfile(profile){
         payload: profile
     }
 }
+
+export function updateProfile (name,intro, github, website, technologies,userId,jwt){
+    return function thunk (dispatch,getstate){
+        api(`/developers/${userId}`, {
+            method: "PUT",
+            body: {
+              name: name,
+              intro: intro,
+              github_username: github,
+              website: website,
+              technologies: technologies,
+            },
+            jwt: jwt
+          })
+            .then(data => dispatch(foundProfile(data)))
+            .catch(err => console.log("err", err));
+    }
+}
